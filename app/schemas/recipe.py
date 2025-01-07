@@ -34,20 +34,20 @@ class InstagramRecipeCreate(RecipeBase):
     source_url: HttpUrl
     video_url: HttpUrl
     caption: Optional[str] = None
-    metadata: Optional[Dict] = None  # For Instagram-specific metadata
+    source_metadata: Optional[Dict] = None
 
 class WebsiteRecipeCreate(RecipeBase):
     source_type: str = "website"
     source_url: HttpUrl
     image_urls: Optional[List[HttpUrl]] = None
-    metadata: Optional[Dict] = None  # For website-specific metadata
+    source_metadata: Optional[Dict] = None
 
 class BookRecipeCreate(RecipeBase):
     source_type: str = "book"
     book_title: str
     page_number: Optional[int] = None
     image_urls: Optional[List[HttpUrl]] = None
-    metadata: Optional[Dict] = None  # For book-specific metadata
+    source_metadata: Optional[Dict] = None
 
 class RecipeCreate(BaseModel):
     recipe: Union[InstagramRecipeCreate, WebsiteRecipeCreate, BookRecipeCreate]

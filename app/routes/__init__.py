@@ -1,0 +1,1 @@
+from .instagram_routes import router as instagram_router

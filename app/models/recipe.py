@@ -8,8 +8,8 @@ class Recipe(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String, index=True)
-    ingredients = Column(JSON)  # List of structured ingredients
-    instructions = Column(JSON)  # List of steps
+    ingredients = Column(JSON)
+    instructions = Column(JSON)
     
     # Common metadata fields that may be available across sources
     servings = Column(Integer, nullable=True)
@@ -32,7 +32,7 @@ class Recipe(Base):
     video_url = Column(String, nullable=True)  # For Instagram videos
     
     # Additional source-specific metadata
-    metadata = Column(JSON, nullable=True)  # Flexible field for source-specific data
+    source_metadata = Column(JSON, nullable=True)
     
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
