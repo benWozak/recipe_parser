@@ -34,5 +34,12 @@ class Recipe(Base):
     # Additional source-specific metadata
     source_metadata = Column(JSON, nullable=True)
     
+    household_id = Column(Integer, ForeignKey('households.id'))
+    created_by_id = Column(Integer, ForeignKey('users.id'))
+    
+    # Relationships
+    household = relationship("Household", back_populates="recipes")
+    created_by = relationship("User")
+    
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
